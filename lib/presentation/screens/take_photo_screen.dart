@@ -29,28 +29,26 @@ class TakePhotoScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(15.0),
                 // ignore: prefer_const_literals_to_create_immutables
                 child: Column(children: [
-                  const CircleAvatar(
-                      radius: 50,
-                      backgroundColor: Colors.black,
-                      child: Icon(
-                        Icons.camera,
-                        color: Colors.white,
-                      )),
+                  InkWell(
+                    onTap: () {
+                      cubit.openImagePicker();
+                    },
+                    child: CircleAvatar(
+                        radius: 50,
+                        backgroundColor: Colors.black,
+                        child: cubit.imageGallery == null
+                            ? const Icon(
+                                Icons.camera,
+                                color: Colors.white,
+                              )
+                            : Image.file(
+                                cubit.imageGallery!,
+                                width: 70,
+                                height: 70,
+                              )),
+                  ),
                   const SizedBox(
                     height: 10,
-                  ),
-                  Card(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text("Choose From Gallery"),
-                        IconButton(
-                            onPressed: () {
-                              cubit.openImagePicker();
-                            },
-                            icon: const Icon(Icons.browse_gallery))
-                      ],
-                    ),
                   ),
                   const SizedBox(
                     height: 20,
@@ -59,7 +57,7 @@ class TakePhotoScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text("Choose From Camera"),
+                        const Text("Open Camera"),
                         IconButton(
                             onPressed: () {
                               cubit.openCamera();
