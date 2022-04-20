@@ -48,10 +48,7 @@ class TakePhotoScreen extends StatelessWidget {
                               )),
                   ),
                   const SizedBox(
-                    height: 10,
-                  ),
-                  const SizedBox(
-                    height: 20,
+                    height: 30,
                   ),
                   Card(
                     child: Row(
